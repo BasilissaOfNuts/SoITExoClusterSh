@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.exo.networkfix</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/zsh</string>
+        <string>-c</string>
+        <string>
+while true; do
+    # Check Bridge 1
+    CURRENT_IP1=$(ipconfig getifaddr $(networksetup -listallhardwareports | awk '/EXO Thunderbolt 1/{getline; print $2}'))
+    if [[ "$CURRENT_IP1" != "10.0.9.2" ]]; then
+        /usr/sbin/networksetup -setmanual "EXO Thunderbolt 1" 10.0.9.2 255.255.255.0 ""
+    fi
+
+    # Check Bridge 2
+    CURRENT_IP2=$(ipconfig getifaddr $(networksetup -listallhardwareports | awk '/EXO Thunderbolt 2/{getline; print $2}'))
+    if [[ "$CURRENT_IP2" != "10.0.1.1" ]]; then
+        /usr/sbin/networksetup -setmanual "EXO Thunderbolt 2" 10.0.1.1 255.255.255.0 ""
+    fi
+
+    sleep 30
+done
+        </string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>StandardErrorPath</key>
+    <string>/tmp/exo_net_fix.err</string>
+    <key>StandardOutPath</key>
+    <string>/tmp/exo_net_fix.out</string>
+</dict>
+</plist>
