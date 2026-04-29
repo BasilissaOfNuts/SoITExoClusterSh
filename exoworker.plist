@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.exo.worker</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Applications/Exo.app/Contents/MacOS/exo</string>
+    </array>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>EXO_NODE_NAME</key>
+        <string>Node #</string> 
+        <key>EXO_MEMORY_LIMIT_GB</key>
+        <string>6</string>
+    </dict>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+</dict>
+</plist>
