@@ -32,31 +32,8 @@ sleep 2
 
 # 4. Create the Exo Worker Plist
 echo "ðŸ“ Writing Exo Worker configuration..."
-cat << 'EOF' > ~/Library/LaunchAgents/com.exo.worker.plist
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>Label</key>
-    <string>com.exo.worker</string>
-    <key>ProgramArguments</key>
-    <array>
-        <string>/Applications/Exo.app/Contents/MacOS/exo</string>
-    </array>
-    <key>EnvironmentVariables</key>
-    <dict>
-        <key>EXO_NODE_NAME</key>
-        <string>Node #</string> 
-        <key>EXO_MEMORY_LIMIT_GB</key>
-        <string>6</string>
-    </dict>
-    <key>RunAtLoad</key>
-    <true/>
-    <key>KeepAlive</key>
-    <true/>
-</dict>
-</plist>
-EOF
+sudo nano /Library/LaunchAgents/com.exo.worker.plist
+
 sleep 2
 
 echo "ðŸ›¡ï¸  Configuring Kernel Power Management for Cluster Mode..."
@@ -118,30 +95,6 @@ sudo networksetup -setmanual "EXO Thunderbolt 2" 10.0.2.2 255.255.255.0
 
 # Then paste these into the shell file here
 sudo nano /Library/LaunchDaemons/com.exo.networkfix.plist
-
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>Label</key>
-    <string>com.exo.networkfix</string>
-    <key>ProgramArguments</key>
-    <array>
-        <string>/bin/zsh</string>
-        <string>-c</string>
-        <string>
-            /usr/sbin/networksetup -setmanual "EXO Thunderbolt 1" 10.0.1.2 255.255.255.0 "";
-            /usr/sbin/networksetup -setmanual "EXO Thunderbolt 2" 10.0.2.2 255.255.255.0 ""
-        </string>
-    </array>
-    <key>RunAtLoad</key>
-    <true/>
-    <key>StandardErrorPath</key>
-    <string>/tmp/exo_net_fix.err</string>
-    <key>StandardOutPath</key>
-    <string>/tmp/exo_net_fix.out</string>
-</dict>
-</plist>
 
 sudo chown root:wheel /Library/LaunchDaemons/com.exo.networkfix.plist
 sudo chmod 644 /Library/LaunchDaemons/com.exo.networkfix.plist
