@@ -12,14 +12,14 @@
 while true; do
     # Check Bridge 1
     CURRENT_IP1=$(ipconfig getifaddr $(networksetup -listallhardwareports | awk '/EXO Thunderbolt 1/{getline; print $2}'))
-    if [[ "$CURRENT_IP1" != "10.0.9.2" ]]; then
-        /usr/sbin/networksetup -setmanual "EXO Thunderbolt 1" 10.0.9.2 255.255.255.0 ""
+    if [[ "$CURRENT_IP1" != "10.0.x.x" ]]; then
+        /usr/sbin/networksetup -setmanual "EXO Thunderbolt 1" 10.0.x.x 255.255.255.0 ""
     fi
 
     # Check Bridge 2
     CURRENT_IP2=$(ipconfig getifaddr $(networksetup -listallhardwareports | awk '/EXO Thunderbolt 2/{getline; print $2}'))
-    if [[ "$CURRENT_IP2" != "10.0.1.1" ]]; then
-        /usr/sbin/networksetup -setmanual "EXO Thunderbolt 2" 10.0.1.1 255.255.255.0 ""
+    if [[ "$CURRENT_IP2" != "10.0.x.x" ]]; then
+        /usr/sbin/networksetup -setmanual "EXO Thunderbolt 2" 10.0.x.x 255.255.255.0 ""
     fi
 
     sleep 30
