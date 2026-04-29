@@ -86,16 +86,9 @@ sudo nano ~/Library/LaunchAgents/com.exo.worker.plist
 launchctl load ~/Library/LaunchAgents/com.exo.worker.plist
 
 # 7. Thunderbolt IP Lockdown
-
-# Lock Bridge 1 (e.g. Incoming from Node 1)
-sudo networksetup -setmanual "EXO Thunderbolt 1" 10.0.1.2 255.255.255.0
-
-# Lock Bridge 2 (e.g. Outgoing to Node 3)
-sudo networksetup -setmanual "EXO Thunderbolt 2" 10.0.2.2 255.255.255.0
-
-# Then paste these into the shell file here
 sudo nano /Library/LaunchDaemons/com.exo.networkfix.plist
 
-sudo chown root:wheel /Library/LaunchDaemons/com.exo.networkfix.plist
-sudo chmod 644 /Library/LaunchDaemons/com.exo.networkfix.plist
-sudo launchctl load -w /Library/LaunchDaemons/com.exo.networkfix.plist
+sudo chown root:wheel /Library/LaunchDaemons/com.exo.worker.plist
+sudo chmod 644 /Library/LaunchDaemons/com.exo.worker.plist
+sudo launchctl unload /Library/LaunchDaemons/com.exo.worker.plist
+sudo launchctl load -w /Library/LaunchDaemons/com.exo.worker.plist
