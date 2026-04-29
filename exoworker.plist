@@ -14,6 +14,10 @@
         <string>Node #</string> 
         <key>EXO_MEMORY_LIMIT_GB</key>
         <string>6</string>
+        <key>EXO_NODE_HOST</key>
+        <string>10.0.x.x</string>
+        <key>EXO_LIBP2P_NAMESPACE</key>
+        <string>soit_exo_cluster</string>
     </dict>
     <key>RunAtLoad</key>
     <true/>
