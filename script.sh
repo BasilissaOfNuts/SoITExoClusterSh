@@ -32,7 +32,12 @@ sleep 2
 
 # 4. Create the Exo Worker Plist
 echo "ðŸ“ Writing Exo Worker configuration..."
-sudo nano /Library/LaunchAgents/com.exo.worker.plist
+
+sudo nano ~/Library/LaunchAgents/com.exo.worker.plist
+
+launchctl unload ~/Library/LaunchAgents/com.exo.worker.plist
+launchctl load -w ~/Library/LaunchAgents/com.exo.worker.plist
+
 
 sleep 2
 
@@ -69,26 +74,3 @@ sleep 3
 
 echo "âœ… Setup Complete! Exo is now running as a headless worker."
 echo "âš ï¸  Reminder: Go to System Settings and toggle Exo 'ON' in Background Activity."
-
-# 6. Fix for node names
-
-# Unload the old one first
-launchctl unload ~/Library/LaunchAgents/com.exo.worker.plist
-
-sudo pkill -9 exo
-
-# Remove the identity and cache files
-rm -rf /Users/macadmin/.exo/*
-
-sudo nano ~/Library/LaunchAgents/com.exo.worker.plist
-
-# Load the new version with the unique name
-launchctl load ~/Library/LaunchAgents/com.exo.worker.plist
-
-# 7. Thunderbolt IP Lockdown
-sudo nano /Library/LaunchDaemons/com.exo.networkfix.plist
-
-sudo chown root:wheel /Library/LaunchDaemons/com.exo.worker.plist
-sudo chmod 644 /Library/LaunchDaemons/com.exo.worker.plist
-sudo launchctl unload /Library/LaunchDaemons/com.exo.worker.plist
-sudo launchctl load -w /Library/LaunchDaemons/com.exo.worker.plist
