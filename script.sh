@@ -38,6 +38,8 @@ sudo nano ~/Library/LaunchAgents/com.exo.worker.plist
 launchctl unload ~/Library/LaunchAgents/com.exo.worker.plist
 launchctl load -w ~/Library/LaunchAgents/com.exo.worker.plist
 
+sudo launchctl unload /Library/LaunchDaemons/com.exo.networkfix.plist
+
 
 sleep 2
 
