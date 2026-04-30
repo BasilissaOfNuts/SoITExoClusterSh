@@ -58,6 +58,7 @@ sudo pmset -a autopoweroff 0
 sudo pmset -a womp 1            # Wake on Magic Packet
 sudo pmset -a networkoversleep 0 # Prevents the NIC from napping
 sudo pmset -a ttyskeepawake 1   # Keeps the system alive as long as a process (Exo) is active
+sudo pmset -a disablesleep 1
 
 # 3. Disable 'Power Nap' (It causes CPU spikes for maintenance that ruin inference)
 sudo pmset -a powernap 0
