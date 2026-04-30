@@ -76,3 +76,7 @@ sleep 3
 
 echo "âœ… Setup Complete! Exo is now running as a headless worker."
 echo "âš ï¸  Reminder: Go to System Settings and toggle Exo 'ON' in Background Activity."
+
+networksetup -listallhardwareports
+networksetup -setMTU en7 9000
+networksetup -getMTU en7
