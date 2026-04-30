@@ -82,4 +82,4 @@ networksetup -listallhardwareports
 networksetup -setMTU en7 9000
 networksetup -getMTU en7
 
-ping -D -s 8972 10.0.x.x
+ping -D -s 8184 10.0.x.x # Test Jumbo Frames
