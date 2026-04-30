@@ -80,3 +80,5 @@ echo "âš ï¸  Reminder: Go to System Settings and toggle Exo 'ON' in Backgr
 networksetup -listallhardwareports
 networksetup -setMTU en7 9000
 networksetup -getMTU en7
+
+ping -D -s 8972 10.0.x.x
