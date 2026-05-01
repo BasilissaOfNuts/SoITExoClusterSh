@@ -7,15 +7,15 @@
     <key>ProgramArguments</key>
     <array>
         <string>/Applications/Exo.app/Contents/MacOS/exo</string>
+        <string>--node-name</string>
+        <string>Node #</string>
+        <string>--node-host</string>
+        <string>10.0.0.#</string>
+        <string>--memory-limit-gb</string>
+        <string>6</string>
     </array>
     <key>EnvironmentVariables</key>
     <dict>
-        <key>EXO_NODE_NAME</key>
-        <string>Node #</string> 
-        <key>EXO_MEMORY_LIMIT_GB</key>
-        <string>6</string>
-        <key>EXO_NODE_HOST</key>
-        <string>10.0.x.x</string>
         <key>EXO_LIBP2P_NAMESPACE</key>
         <string>soit_exo_cluster</string>
     </dict>
@@ -23,5 +23,9 @@
     <true/>
     <key>KeepAlive</key>
     <true/>
+    <key>StandardOutPath</key>
+    <string>/tmp/exo.node#.out.log</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/exo.node#.err.log</string>
 </dict>
 </plist>
