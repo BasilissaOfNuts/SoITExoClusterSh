@@ -21,8 +21,6 @@
     </dict>
     <key>RunAtLoad</key>
     <true/>
-    <key>KeepAlive</key>
-    <true/>
     <key>StandardOutPath</key>
     <string>/tmp/exo.node#.out.log</string>
     <key>StandardErrorPath</key>
