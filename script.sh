@@ -69,6 +69,7 @@ sudo sysctl debug.lowpri_throttle_enabled=0
 
 # 5. Set Permissions and Bootstrap
 echo "ðŸ”’ Setting permissions and starting Exo in background..."
+
 chmod 644 ~/Library/LaunchAgents/com.exo.worker.plist
 sleep 2
 
@@ -83,3 +84,12 @@ networksetup -setMTU en7 9000
 networksetup -getMTU en7
 
 ping -D -s 8184 10.0.x.x # Test Jumbo Frames
+
+# Worker plist Fix
+launchctl unload ~/Library/LaunchAgents/com.exo.worker.plist
+sudo nano ~/Library/LaunchAgents/com.exo.worker.plist
+
+rm -rf ~/.cache/exo/
+launchctl load ~/Library/LaunchAgents/com.exo.worker.plist
+
+ps aux | grep -i exo
